@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ChannelController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\DirectConversationController;
 use App\Http\Controllers\Api\MessageController;
+use App\Http\Controllers\Api\ReactionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -84,5 +85,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('{conversation}/messages', [DirectConversationController::class, 'messages']);
         Route::post('{conversation}/messages', [DirectConversationController::class, 'sendMessage']);
         Route::post('{conversation}/typing', [DirectConversationController::class, 'typing']);
+    });
+
+    // Emojis
+    Route::get('emojis', [ReactionController::class, 'emojis']);
+
+    // Reactions
+    Route::prefix('messages/{message}/reactions')->group(function () {
+        Route::get('/', [ReactionController::class, 'index']);
+        Route::post('/', [ReactionController::class, 'store']);
+        Route::post('/toggle', [ReactionController::class, 'toggle']);
+        Route::delete('/{emoji}', [ReactionController::class, 'destroy']);
     });
 });
