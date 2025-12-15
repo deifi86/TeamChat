@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(php artisan test:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(php artisan:*)"
     ]
   }
 }

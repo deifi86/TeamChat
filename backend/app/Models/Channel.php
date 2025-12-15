@@ -60,4 +60,22 @@ class Channel extends Model
     {
         return $this->hasMany(ChannelJoinRequest::class);
     }
+
+    public function pendingJoinRequests()
+    {
+        return $this->joinRequests()->where('status', 'pending');
+    }
+
+    // Methods
+    public function addMember(User $user, ?User $addedBy = null): void
+    {
+        if ($this->users()->where('user_id', $user->id)->exists()) {
+            return;
+        }
+
+        $this->users()->attach($user->id, [
+            'added_by' => $addedBy?->id,
+            'joined_at' => now(),
+        ]);
+    }
 }

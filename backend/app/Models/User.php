@@ -85,4 +85,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(DirectConversation::class, 'user_two_id');
     }
+
+    // Accessors
+    public function getAvatarUrlAttribute(): ?string
+    {
+        if (!$this->avatar_path) {
+            return null;
+        }
+
+        return asset('storage/' . $this->avatar_path);
+    }
+
+    // Helper Methods
+    public function isMemberOf(Company $company): bool
+    {
+        return $this->companies()->where('company_id', $company->id)->exists();
+    }
+
+    public function isAdminOf(Company $company): bool
+    {
+        $membership = $this->companies()
+            ->where('company_id', $company->id)
+            ->first();
+
+        return $membership && $membership->pivot->role === 'admin';
+    }
+
+    public function isMemberOfChannel(Channel $channel): bool
+    {
+        return $this->channels()->where('channel_id', $channel->id)->exists();
+    }
 }

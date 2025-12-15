@@ -13,7 +13,7 @@ Nach Abschluss dieser Phase haben wir:
 ## 2.1 Company Controller [BE]
 
 ### 2.1.1 CompanyController erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von Phase 1 abgeschlossen*
 
@@ -51,7 +51,7 @@ class CompanyController extends Controller
 ---
 
 ### 2.1.2 Endpoint: GET /api/my-companies
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Liste aller Firmen des aktuellen Users.
 
@@ -186,7 +186,7 @@ class MyCompaniesTest extends TestCase
 ---
 
 ### 2.1.3 Endpoint: GET /api/companies/search
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Firmen durchsuchen (für Beitritt).
 
@@ -326,7 +326,7 @@ class SearchCompanyTest extends TestCase
 ---
 
 ### 2.1.4 Endpoint: POST /api/companies
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Neue Firma erstellen.
 
@@ -538,7 +538,7 @@ class CreateCompanyTest extends TestCase
 ---
 
 ### 2.1.5 Endpoint: GET /api/companies/{company}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Details einer Firma (nur für Mitglieder).
 
@@ -680,7 +680,7 @@ class ShowCompanyTest extends TestCase
 ---
 
 ### 2.1.6 Endpoint: PUT /api/companies/{company}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Firma aktualisieren (nur Owner).
 
@@ -805,7 +805,7 @@ class UpdateCompanyTest extends TestCase
 ---
 
 ### 2.1.7 Endpoint: POST /api/companies/{company}/join
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Firma beitreten mit Passwort.
 
@@ -971,7 +971,7 @@ class JoinCompanyTest extends TestCase
 ---
 
 ### 2.1.8 Endpoint: POST /api/companies/{company}/leave
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Firma verlassen.
 
@@ -1094,7 +1094,7 @@ class LeaveCompanyTest extends TestCase
 ---
 
 ### 2.1.9 Endpoint: GET /api/companies/{company}/members
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Mitgliederliste einer Firma.
 
@@ -1153,7 +1153,7 @@ public function members(Request $request, Company $company): JsonResponse
 ---
 
 ### 2.1.10 Endpoint: PUT /api/companies/{company}/members/{userId}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Rolle eines Mitglieds ändern (nur Admin).
 
@@ -1287,7 +1287,7 @@ class UpdateMemberTest extends TestCase
 ---
 
 ### 2.1.11 Endpoint: DELETE /api/companies/{company}/members/{userId}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Mitglied aus Firma entfernen (nur Admin).
 
@@ -1339,7 +1339,7 @@ public function removeMember(Request $request, Company $company, int $userId): J
 ---
 
 ### 2.1.12 Endpoint: POST /api/companies/{company}/logo
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Firmenlogo hochladen (nur Owner).
 
@@ -1404,7 +1404,7 @@ public function uploadLogo(Request $request, Company $company): JsonResponse
 ## 2.2 Channel Controller [BE]
 
 ### 2.2.1 ChannelController erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von 2.1.1*
 
@@ -1436,7 +1436,7 @@ class ChannelController extends Controller
 ---
 
 ### 2.2.2 Endpoint: GET /api/companies/{company}/channels
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Alle Channels einer Firma auflisten.
 
@@ -1496,7 +1496,7 @@ public function index(Request $request, Company $company): JsonResponse
 ---
 
 ### 2.2.3 Endpoint: POST /api/companies/{company}/channels
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Neuen Channel erstellen (nur Admin).
 
@@ -1665,7 +1665,7 @@ class CreateChannelTest extends TestCase
 ---
 
 ### 2.2.4 Endpoint: GET /api/channels/{channel}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Channel-Details abrufen.
 
@@ -1699,7 +1699,7 @@ public function show(Request $request, Channel $channel): JsonResponse
 ---
 
 ### 2.2.5 Endpoint: PUT /api/channels/{channel}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Channel aktualisieren (nur Admin).
 
@@ -1794,7 +1794,7 @@ class UpdateChannelTest extends TestCase
 ---
 
 ### 2.2.6 Endpoint: DELETE /api/channels/{channel}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Channel löschen (nur Admin).
 
@@ -1882,7 +1882,7 @@ class DeleteChannelTest extends TestCase
 ---
 
 ### 2.2.7 Endpoint: GET /api/channels/{channel}/members
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Channel-Mitglieder auflisten.
 
@@ -1915,7 +1915,7 @@ public function members(Request $request, Channel $channel): JsonResponse
 ---
 
 ### 2.2.8 Endpoint: POST /api/channels/{channel}/members
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Mitglied zum Channel einladen (nur Admin).
 
@@ -1971,7 +1971,7 @@ public function addMember(Request $request, Channel $channel): JsonResponse
 ---
 
 ### 2.2.9 Endpoint: DELETE /api/channels/{channel}/members/{userId}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Mitglied aus Channel entfernen (nur Admin).
 
@@ -1998,7 +1998,7 @@ public function removeMember(Request $request, Channel $channel, int $userId): J
 ---
 
 ### 2.2.10 Endpoint: POST /api/channels/{channel}/join-request
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Beitrittsanfrage für privaten Channel stellen.
 
@@ -2156,7 +2156,7 @@ class JoinRequestTest extends TestCase
 ---
 
 ### 2.2.11 Endpoint: GET /api/channels/{channel}/join-requests
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Beitrittsanfragen auflisten (nur Admin).
 
@@ -2213,7 +2213,7 @@ public function joinRequests(Request $request, Channel $channel): JsonResponse
 ---
 
 ### 2.2.12 Endpoint: PUT /api/channels/{channel}/join-requests/{joinRequest}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Beitrittsanfrage genehmigen oder ablehnen (nur Admin).
 
@@ -2348,7 +2348,7 @@ class HandleJoinRequestTest extends TestCase
 ## 2.3 Routes & Tests [BE]
 
 ### 2.3.1 Company & Channel Routes definieren
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von 2.1.1 bis 2.2.12*
 
@@ -2400,7 +2400,7 @@ Route::middleware('auth:sanctum')->group(function () {
 ---
 
 ### 2.3.2 Alle Phase 2 Tests ausführen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -2416,7 +2416,7 @@ php artisan test
 ---
 
 ### 2.3.3 Git Commit & Tag
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
