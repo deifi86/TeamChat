@@ -48,4 +48,39 @@ class File extends Model
     {
         return $this->belongsTo(User::class, 'uploader_id');
     }
+
+    // Accessors
+    public function getUrlAttribute(): string
+    {
+        if ($this->file_path) {
+            return asset('storage/' . $this->file_path);
+        }
+        return '';
+    }
+
+    public function getThumbnailUrlAttribute(): ?string
+    {
+        if ($this->thumbnail_path) {
+            return asset('storage/' . $this->thumbnail_path);
+        }
+        return null;
+    }
+
+    public function getHumanFileSizeAttribute(): string
+    {
+        $bytes = $this->file_size;
+        $units = ['B', 'KB', 'MB', 'GB', 'TB'];
+
+        for ($i = 0; $bytes > 1024; $i++) {
+            $bytes /= 1024;
+        }
+
+        return round($bytes, 2) . ' ' . $units[$i];
+    }
+
+    // Methods
+    public function isImage(): bool
+    {
+        return str_starts_with($this->mime_type, 'image/');
+    }
 }

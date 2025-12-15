@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Laravel\Facades\Image;
 use Tinify\Tinify;
@@ -135,5 +136,56 @@ class ImageCompressionService
         } catch (\Exception $e) {
             return null;
         }
+    }
+
+    /**
+     * Check if a MIME type can be compressed
+     */
+    public function isCompressible(string $mimeType): bool
+    {
+        return in_array($mimeType, [
+            'image/jpeg',
+            'image/png',
+            'image/webp',
+        ]);
+    }
+
+    /**
+     * Compress an uploaded file and store it
+     *
+     * @param UploadedFile $file - The uploaded file
+     * @param string $storagePath - Path where to store in storage disk
+     * @param string $disk - Storage disk name
+     * @return array ['success' => bool, 'path' => string, 'original_size' => int, 'compressed_size' => int]
+     */
+    public function compressUploadedFile(UploadedFile $file, string $storagePath, string $disk = 'public'): array
+    {
+        $originalSize = $file->getSize();
+
+        // Store file temporarily
+        $tempPath = $file->storeAs('temp', uniqid() . '.' . $file->extension(), $disk);
+        $fullTempPath = Storage::disk($disk)->path($tempPath);
+
+        // Prepare destination path
+        $fullDestinationPath = Storage::disk($disk)->path($storagePath);
+
+        // Ensure directory exists
+        $dir = dirname($fullDestinationPath);
+        if (!is_dir($dir)) {
+            mkdir($dir, 0755, true);
+        }
+
+        // Compress
+        $result = $this->compress($fullTempPath, $fullDestinationPath);
+
+        // Clean up temp file
+        Storage::disk($disk)->delete($tempPath);
+
+        return [
+            'success' => $result['success'],
+            'path' => $storagePath,
+            'original_size' => $originalSize,
+            'compressed_size' => $result['compressed_size'],
+        ];
     }
 }

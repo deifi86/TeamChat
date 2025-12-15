@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChannelController;
 use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\DirectConversationController;
+use App\Http\Controllers\Api\FileController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReactionController;
 use App\Http\Controllers\Api\UserController;
@@ -96,5 +97,20 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/', [ReactionController::class, 'store']);
         Route::post('/toggle', [ReactionController::class, 'toggle']);
         Route::delete('/{emoji}', [ReactionController::class, 'destroy']);
+    });
+
+    // File Upload
+    Route::post('channels/{channel}/files', [FileController::class, 'uploadToChannel']);
+    Route::post('conversations/{conversation}/files', [FileController::class, 'uploadToConversation']);
+
+    // File Browser
+    Route::get('channels/{channel}/files', [FileController::class, 'channelFiles']);
+    Route::get('conversations/{conversation}/files', [FileController::class, 'conversationFiles']);
+
+    // File Operations
+    Route::prefix('files')->group(function () {
+        Route::get('{file}', [FileController::class, 'show']);
+        Route::get('{file}/download', [FileController::class, 'download']);
+        Route::delete('{file}', [FileController::class, 'destroy']);
     });
 });

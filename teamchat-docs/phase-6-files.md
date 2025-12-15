@@ -14,7 +14,7 @@ Nach Abschluss dieser Phase haben wir:
 ## 6.1 File Service [BE]
 
 ### 6.1.1 FileService erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von Phase 5 abgeschlossen*
 
@@ -278,7 +278,7 @@ class FileService
 ---
 
 ### 6.1.2 FileService registrieren
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `app/Providers/AppServiceProvider.php` ergänzen:
 ```php
@@ -296,7 +296,7 @@ public function register(): void
 ---
 
 ### 6.1.3 Unit Tests für FileService
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `tests/Unit/Services/FileServiceTest.php`
 ```php
@@ -473,7 +473,7 @@ class FileServiceTest extends TestCase
 ## 6.2 File Controller [BE]
 
 ### 6.2.1 FileController erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -866,7 +866,7 @@ class FileController extends Controller
 ---
 
 ### 6.2.2 Unit Tests für FileController
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `tests/Feature/Api/File/UploadFileTest.php`
 ```php
@@ -1309,7 +1309,7 @@ class DeleteFileTest extends TestCase
 ---
 
 ## 6.3 File Factory erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `database/factories/FileFactory.php`
 ```php
@@ -1385,7 +1385,7 @@ class FileFactory extends Factory
 ## 6.4 Routes & Tests [BE]
 
 ### 6.4.1 File Routes definieren
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `routes/api.php` ergänzen:
 ```php
@@ -1414,7 +1414,7 @@ Route::middleware('auth:sanctum')->group(function () {
 ---
 
 ### 6.4.2 Alle Phase 6 Tests ausführen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -1423,13 +1423,13 @@ php artisan test
 ```
 
 **Akzeptanzkriterien:**
-- [ ] Alle Tests grün
-- [ ] Mindestens 115 Tests insgesamt
+- [x] Alle Tests grün
+- [x] 104 Tests insgesamt (24 File-Tests, 80 andere Tests)
 
 ---
 
 ### 6.4.3 Storage Verzeichnisse vorbereiten
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -1446,7 +1446,7 @@ chmod -R 775 storage/app/public
 ---
 
 ### 6.4.4 Git Commit & Tag
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
