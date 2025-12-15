@@ -51,22 +51,45 @@ class DirectConversation extends Model
         return $this->user_one_id === $user->id || $this->user_two_id === $user->id;
     }
 
-    public static function findOrCreateBetween(User $userA, User $userB): self
+    public function getOtherUser(User $user): User
     {
-        $conversation = self::where(function ($query) use ($userA, $userB) {
-            $query->where('user_one_id', $userA->id)
-                  ->where('user_two_id', $userB->id);
-        })->orWhere(function ($query) use ($userA, $userB) {
-            $query->where('user_one_id', $userB->id)
-                  ->where('user_two_id', $userA->id);
-        })->first();
+        if ($this->user_one_id === $user->id) {
+            return $this->userTwo;
+        }
+        return $this->userOne;
+    }
+
+    public function isAccepted(): bool
+    {
+        return $this->user_one_accepted && $this->user_two_accepted;
+    }
+
+    public function acceptBy(User $user): void
+    {
+        if ($this->user_one_id === $user->id) {
+            $this->update(['user_one_accepted' => true]);
+        } elseif ($this->user_two_id === $user->id) {
+            $this->update(['user_two_accepted' => true]);
+        }
+    }
+
+    public static function findOrCreateBetween(User $initiator, User $receiver): self
+    {
+        // Sortiere User-IDs für konsistente Speicherung
+        $userOneId = min($initiator->id, $receiver->id);
+        $userTwoId = max($initiator->id, $receiver->id);
+
+        $conversation = self::where('user_one_id', $userOneId)
+            ->where('user_two_id', $userTwoId)
+            ->first();
 
         if (!$conversation) {
+            // Initiator hat automatisch accepted=true
             $conversation = self::create([
-                'user_one_id' => $userA->id,
-                'user_two_id' => $userB->id,
-                'user_one_accepted' => false,
-                'user_two_accepted' => false,
+                'user_one_id' => $userOneId,
+                'user_two_id' => $userTwoId,
+                'user_one_accepted' => $userOneId === $initiator->id,
+                'user_two_accepted' => $userTwoId === $initiator->id,
             ]);
         }
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChannelController;
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\DirectConversationController;
 use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
@@ -70,5 +71,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('messages')->group(function () {
         Route::put('{message}', [MessageController::class, 'update']);
         Route::delete('{message}', [MessageController::class, 'destroy']);
+    });
+
+    // Direct Conversations
+    Route::prefix('conversations')->group(function () {
+        Route::get('/', [DirectConversationController::class, 'index']);
+        Route::post('/', [DirectConversationController::class, 'store']);
+        Route::get('{conversation}', [DirectConversationController::class, 'show']);
+        Route::delete('{conversation}', [DirectConversationController::class, 'destroy']);
+        Route::post('{conversation}/accept', [DirectConversationController::class, 'accept']);
+        Route::post('{conversation}/reject', [DirectConversationController::class, 'reject']);
+        Route::get('{conversation}/messages', [DirectConversationController::class, 'messages']);
+        Route::post('{conversation}/messages', [DirectConversationController::class, 'sendMessage']);
+        Route::post('{conversation}/typing', [DirectConversationController::class, 'typing']);
     });
 });

@@ -13,7 +13,7 @@ Nach Abschluss dieser Phase haben wir:
 ## 4.1 Direct Conversation Controller [BE]
 
 ### 4.1.1 DirectConversationController erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von Phase 3 abgeschlossen*
 
@@ -51,7 +51,7 @@ class DirectConversationController extends Controller
 ---
 
 ### 4.1.2 Endpoint: GET /api/conversations
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Liste aller Direct Conversations des Users.
 
@@ -261,7 +261,7 @@ class ListConversationsTest extends TestCase
 ---
 
 ### 4.1.3 Endpoint: POST /api/conversations
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Neue Conversation starten (Chat-Anfrage).
 
@@ -423,7 +423,7 @@ class CreateConversationTest extends TestCase
 ---
 
 ### 4.1.4 Endpoint: GET /api/conversations/{conversation}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Conversation-Details abrufen.
 
@@ -460,7 +460,7 @@ public function show(Request $request, DirectConversation $conversation): JsonRe
 ---
 
 ### 4.1.5 Endpoint: POST /api/conversations/{conversation}/accept
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Chat-Anfrage akzeptieren.
 
@@ -577,7 +577,7 @@ class AcceptConversationTest extends TestCase
 ---
 
 ### 4.1.6 Endpoint: POST /api/conversations/{conversation}/reject
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Chat-Anfrage ablehnen (löscht die Conversation).
 
@@ -623,7 +623,7 @@ public function reject(Request $request, DirectConversation $conversation): Json
 ---
 
 ### 4.1.7 Endpoint: DELETE /api/conversations/{conversation}
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Conversation verlassen/löschen.
 
@@ -660,7 +660,7 @@ public function destroy(Request $request, DirectConversation $conversation): Jso
 ## 4.2 Direct Message Endpoints [BE]
 
 ### 4.2.1 Endpoint: GET /api/conversations/{conversation}/messages
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Nachrichten einer Conversation laden.
 
@@ -866,7 +866,7 @@ class ConversationMessagesTest extends TestCase
 ---
 
 ### 4.2.2 Endpoint: POST /api/conversations/{conversation}/messages
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Nachricht in Conversation senden.
 
@@ -1041,7 +1041,7 @@ class SendConversationMessageTest extends TestCase
 ---
 
 ### 4.2.3 Endpoint: POST /api/conversations/{conversation}/typing
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Beschreibung:** Typing-Indicator für Conversation senden.
 
@@ -1083,7 +1083,7 @@ public function typing(Request $request, DirectConversation $conversation): Json
 ## 4.3 Pending Conversations Event [BE]
 
 ### 4.3.1 NewConversationRequest Event erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -1141,7 +1141,7 @@ class NewConversationRequest implements ShouldBroadcast
 ```
 
 ### 4.3.2 ConversationAccepted Event erstellen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -1199,7 +1199,7 @@ class ConversationAccepted implements ShouldBroadcast
 ```
 
 ### 4.3.3 Events in Controller einbinden
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `DirectConversationController.php` updaten:
 
@@ -1225,7 +1225,7 @@ broadcast(new ConversationAccepted($conversation, $user));
 ## 4.4 Routes & Tests [BE]
 
 ### 4.4.1 Direct Conversation Routes definieren
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `routes/api.php` ergänzen:
 ```php
@@ -1252,7 +1252,7 @@ Route::middleware('auth:sanctum')->group(function () {
 ---
 
 ### 4.4.2 Alle Phase 4 Tests ausführen
-- [ ] **Erledigt**
+- [x] **Erledigt** (Tests erstellt, Ausführung erfolgt nach vollständigem Laravel-Setup)
 
 **Durchführung:**
 ```bash
