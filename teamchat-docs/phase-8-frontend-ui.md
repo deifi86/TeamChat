@@ -702,7 +702,7 @@ defineEmits(['click'])
 ## 8.2 Auth Views [FE]
 
 ### 8.2.1 Login View
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/auth/LoginView.vue`
 ```vue
@@ -866,7 +866,7 @@ async function handleSubmit() {
 ---
 
 ### 8.2.2 Register View
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/auth/RegisterView.vue`
 ```vue
@@ -1068,7 +1068,7 @@ async function handleSubmit() {
 ## 8.3 Main Layout [FE]
 
 ### 8.3.1 MainLayout View
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/MainLayout.vue`
 ```vue
@@ -1151,7 +1151,7 @@ onMounted(async () => {
 ---
 
 ### 8.3.2 CompanySidebar Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/layout/CompanySidebar.vue`
 ```vue
@@ -1347,7 +1347,7 @@ async function logout() {
 ---
 
 ### 8.3.3 ChannelSidebar Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/layout/ChannelSidebar.vue`
 ```vue
@@ -1637,7 +1637,7 @@ async function leaveCompany() {
 ## 8.4 Chat Components [FE]
 
 ### 8.4.1 ChannelView
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/ChannelView.vue`
 ```vue
@@ -1836,7 +1836,7 @@ onUnmounted(() => {
 ---
 
 ### 8.4.2 MessageList Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/chat/MessageList.vue`
 ```vue
@@ -1898,7 +1898,7 @@ function shouldShowAvatar(current: Message, previous?: Message): boolean {
 ---
 
 ### 8.4.3 MessageItem Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/chat/MessageItem.vue`
 ```vue
@@ -2074,7 +2074,7 @@ async function handleEmojiSelect(emoji: string) {
 ---
 
 ### 8.4.4 MessageInput Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/chat/MessageInput.vue`
 ```vue
@@ -2307,7 +2307,7 @@ function insertEmoji(emoji: string) {
 ---
 
 ### 8.4.5 MessageReactions Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/chat/MessageReactions.vue`
 ```vue
@@ -2378,7 +2378,7 @@ function toggleReaction(emoji: string) {
 ---
 
 ### 8.4.6 TypingIndicator Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/chat/TypingIndicator.vue`
 ```vue
@@ -2463,7 +2463,7 @@ const typingText = computed(() => {
 ## 8.5 Direct Messages [FE]
 
 ### 8.5.1 DMSidebar Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/layout/DMSidebar.vue`
 ```vue
@@ -2642,7 +2642,7 @@ function truncate(text: string, length: number): string {
 ---
 
 ### 8.5.2 ConversationView
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/ConversationView.vue`
 ```vue
@@ -2824,7 +2824,7 @@ function scrollToBottom() {
 ## 8.6 Modals [FE]
 
 ### 8.6.1 AddCompanyModal
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/modals/AddCompanyModal.vue`
 ```vue
@@ -3090,7 +3090,7 @@ async function joinCompany() {
 ---
 
 ### 8.6.2 CreateChannelModal
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/modals/CreateChannelModal.vue`
 ```vue
@@ -3239,7 +3239,7 @@ async function createChannel() {
 ## 8.7 Tests & Abschluss [FE]
 
 ### 8.7.1 Component Tests
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/__tests__/Button.spec.ts`
 ```typescript
@@ -3289,7 +3289,7 @@ describe('Button', () => {
 ---
 
 ### 8.7.2 View Tests
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/views/__tests__/LoginView.spec.ts`
 ```typescript
@@ -3331,7 +3331,7 @@ describe('LoginView', () => {
 ---
 
 ### 8.7.3 Alle Tests ausführen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -3346,7 +3346,7 @@ npm run test:unit
 ---
 
 ### 8.7.4 Build testen
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
@@ -3369,7 +3369,7 @@ npm run electron:build:linux # Linux
 ---
 
 ### 8.7.5 Git Commit & Tag
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash
