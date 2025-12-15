@@ -9,6 +9,57 @@ use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\ReactionController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
+
+// Health Check (ohne Auth)
+Route::get('/health', function () {
+    $checks = [];
+    $healthy = true;
+
+    // Database
+    try {
+        DB::connection()->getPdo();
+        $checks['database'] = 'ok';
+    } catch (\Exception $e) {
+        $checks['database'] = 'error: ' . $e->getMessage();
+        $healthy = false;
+    }
+
+    // Redis
+    try {
+        Redis::ping();
+        $checks['redis'] = 'ok';
+    } catch (\Exception $e) {
+        $checks['redis'] = 'error: ' . $e->getMessage();
+        $healthy = false;
+    }
+
+    // Storage
+    try {
+        Storage::disk('public')->exists('.');
+        $checks['storage'] = 'ok';
+    } catch (\Exception $e) {
+        $checks['storage'] = 'error: ' . $e->getMessage();
+        $healthy = false;
+    }
+
+    // Queue
+    try {
+        $queueSize = Redis::llen('queues:default');
+        $checks['queue'] = "ok (pending: $queueSize)";
+    } catch (\Exception $e) {
+        $checks['queue'] = 'error: ' . $e->getMessage();
+    }
+
+    return response()->json([
+        'status' => $healthy ? 'healthy' : 'unhealthy',
+        'timestamp' => now()->toIso8601String(),
+        'checks' => $checks,
+        'version' => config('app.version', '1.0.0'),
+    ], $healthy ? 200 : 503);
+});
 
 // Public Routes
 Route::prefix('auth')->group(function () {

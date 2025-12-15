@@ -14,7 +14,7 @@ Nach Abschluss dieser Phase haben wir:
 ## 9.1 Docker Production Setup [INFRA]
 
 ### 9.1.1 Production Dockerfile für Backend
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 → *Abhängig von Phase 8 abgeschlossen*
 
@@ -93,7 +93,7 @@ CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
 ---
 
 ### 9.1.2 PHP Konfiguration
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/docker/php/php.ini`
 ```ini
@@ -142,7 +142,7 @@ opcache.fast_shutdown = 1
 ---
 
 ### 9.1.3 Nginx Konfiguration
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/docker/nginx/nginx.conf`
 ```nginx
@@ -249,7 +249,7 @@ server {
 ---
 
 ### 9.1.4 Supervisor Konfiguration
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/docker/supervisor/supervisord.conf`
 ```ini
@@ -300,7 +300,7 @@ stderr_logfile=/var/log/supervisor/scheduler-error.log
 ---
 
 ### 9.1.5 Docker Compose Production
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `docker-compose.prod.yml`
 ```yaml
@@ -415,7 +415,7 @@ networks:
 ---
 
 ### 9.1.6 MySQL Optimierung
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `docker/mysql/my.cnf`
 ```ini
@@ -455,7 +455,7 @@ default-character-set = utf8mb4
 ## 9.2 Environment Configuration [INFRA]
 
 ### 9.2.1 Production Environment File
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/.env.production.example`
 ```env
@@ -527,7 +527,7 @@ CORS_ALLOWED_ORIGINS=https://teamchat.example.com,https://app.teamchat.example.c
 ---
 
 ### 9.2.2 Key Generation Script
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `scripts/generate-keys.sh`
 ```bash
@@ -568,7 +568,7 @@ echo "REDIS_PASSWORD=$REDIS_PWD"
 ## 9.3 CI/CD Pipeline [INFRA]
 
 ### 9.3.1 GitHub Actions Workflow
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `.github/workflows/ci.yml`
 ```yaml
@@ -757,7 +757,7 @@ jobs:
 ---
 
 ### 9.3.2 Deployment Script
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `scripts/deploy.sh`
 ```bash
@@ -830,7 +830,7 @@ echo "✨ Deployment completed successfully!"
 ## 9.4 Backup & Recovery [INFRA]
 
 ### 9.4.1 Automated Backup Script
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `scripts/backup.sh`
 ```bash
@@ -919,7 +919,7 @@ cat $BACKUP_DIR/last_backup.txt
 ---
 
 ### 9.4.2 Recovery Script
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `scripts/restore.sh`
 ```bash
@@ -988,7 +988,7 @@ echo "✨ Restore completed!"
 ---
 
 ### 9.4.3 Backup Cron Job
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `/etc/cron.d/teamchat-backup`
 ```cron
@@ -1005,7 +1005,7 @@ echo "✨ Restore completed!"
 ## 9.5 Monitoring [INFRA]
 
 ### 9.5.1 Health Check Endpoint
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/routes/api.php` ergänzen:
 ```php
@@ -1061,7 +1061,7 @@ Route::get('/health', function () {
 ---
 
 ### 9.5.2 Prometheus Metrics (Optional)
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Installation:**
 ```bash
@@ -1136,7 +1136,7 @@ class MetricsController extends Controller
 ---
 
 ### 9.5.3 Logging Configuration
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/config/logging.php` (relevante Teile):
 ```php
@@ -1176,7 +1176,7 @@ class MetricsController extends Controller
 ## 9.6 Security Hardening [INFRA]
 
 ### 9.6.1 Security Headers Middleware
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/app/Http/Middleware/SecurityHeaders.php`
 ```php
@@ -1211,7 +1211,7 @@ class SecurityHeaders
 ---
 
 ### 9.6.2 Rate Limiting
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `backend/app/Providers/RouteServiceProvider.php` ergänzen:
 ```php
@@ -1242,7 +1242,7 @@ protected function configureRateLimiting(): void
 ---
 
 ### 9.6.3 Security Checklist
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `docs/SECURITY_CHECKLIST.md`
 ```markdown
@@ -1304,7 +1304,7 @@ protected function configureRateLimiting(): void
 ## 9.7 Documentation [DOCS]
 
 ### 9.7.1 Server Setup Guide
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `docs/SERVER_SETUP.md`
 ```markdown
@@ -1400,7 +1400,7 @@ docker compose -f docker-compose.prod.yml restart
 ---
 
 ### 9.7.2 API Documentation
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Installation:**
 ```bash
@@ -1413,7 +1413,7 @@ Die API-Dokumentation ist dann unter `/docs/api` verfügbar.
 ---
 
 ### 9.7.3 Git Commit & Tag
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash

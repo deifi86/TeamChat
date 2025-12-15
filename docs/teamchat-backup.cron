@@ -1,0 +1,6 @@
+# TeamChat Backup Schedule
+# Daily backup at 3:00 AM
+0 3 * * * root /opt/teamchat/scripts/backup.sh >> /var/log/teamchat-backup.log 2>&1
+
+# Hourly database backup (for critical systems)
+# 0 * * * * root /opt/teamchat/scripts/backup-db-only.sh >> /var/log/teamchat-backup.log 2>&1
