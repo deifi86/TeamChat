@@ -29,6 +29,11 @@ class DirectConversationController extends Controller
         $conversations = DirectConversation::where('user_one_id', $user->id)
             ->orWhere('user_two_id', $user->id)
             ->with(['userOne:id,username,avatar_path,status', 'userTwo:id,username,avatar_path,status'])
+            ->withCount(['messages as unread_count' => function ($query) use ($user) {
+                // Zähle alle Nachrichten vom anderen User
+                // TODO: Mit ReadReceipts verfeinern, sobald die Tabelle vollständig implementiert ist
+                $query->where('sender_id', '!=', $user->id);
+            }])
             ->get()
             ->map(fn ($conv) => $this->formatConversation($conv, $user))
             ->sortByDesc('updated_at')
@@ -207,10 +212,15 @@ class DirectConversationController extends Controller
             ->orderBy('created_at', 'desc');
 
         if (isset($validated['before'])) {
+            // Pagination: Lade Nachrichten vor dieser Nachricht
             $beforeMessage = Message::find($validated['before']);
             if ($beforeMessage) {
                 $query->where('created_at', '<', $beforeMessage->created_at);
             }
+        } else {
+            // Initiales Laden: Lade Nachrichten der letzten 30 Tage
+            // (verhindert Performance-Probleme bei sehr alten Conversations)
+            $query->where('created_at', '>=', now()->subDays(30));
         }
 
         $messages = $query->limit($limit + 1)->get();
@@ -357,7 +367,7 @@ class DirectConversationController extends Controller
                 ? !$conversation->user_one_accepted
                 : !$conversation->user_two_accepted,
             'last_message' => $lastMessageData,
-            'unread_count' => 0, // TODO: Implement with ReadReceipts
+            'unread_count' => $conversation->unread_count ?? 0,
             'updated_at' => $conversation->updated_at->toIso8601String(),
         ];
     }
