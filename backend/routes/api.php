@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ChannelController;
 use App\Http\Controllers\Api\CompanyController;
+use App\Http\Controllers\Api\MessageController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,5 +59,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('{channel}/join-request', [ChannelController::class, 'requestJoin']);
         Route::get('{channel}/join-requests', [ChannelController::class, 'joinRequests']);
         Route::put('{channel}/join-requests/{joinRequest}', [ChannelController::class, 'handleJoinRequest']);
+
+        // Channel Messages
+        Route::get('{channel}/messages', [MessageController::class, 'channelMessages']);
+        Route::post('{channel}/messages', [MessageController::class, 'storeChannelMessage']);
+        Route::post('{channel}/typing', [MessageController::class, 'typing']);
+    });
+
+    // Message CRUD
+    Route::prefix('messages')->group(function () {
+        Route::put('{message}', [MessageController::class, 'update']);
+        Route::delete('{message}', [MessageController::class, 'destroy']);
     });
 });

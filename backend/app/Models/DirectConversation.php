@@ -44,4 +44,32 @@ class DirectConversation extends Model
     {
         return $this->morphMany(File::class, 'fileable');
     }
+
+    // Helper Methods
+    public function hasUser(User $user): bool
+    {
+        return $this->user_one_id === $user->id || $this->user_two_id === $user->id;
+    }
+
+    public static function findOrCreateBetween(User $userA, User $userB): self
+    {
+        $conversation = self::where(function ($query) use ($userA, $userB) {
+            $query->where('user_one_id', $userA->id)
+                  ->where('user_two_id', $userB->id);
+        })->orWhere(function ($query) use ($userA, $userB) {
+            $query->where('user_one_id', $userB->id)
+                  ->where('user_two_id', $userA->id);
+        })->first();
+
+        if (!$conversation) {
+            $conversation = self::create([
+                'user_one_id' => $userA->id,
+                'user_two_id' => $userB->id,
+                'user_one_accepted' => false,
+                'user_two_accepted' => false,
+            ]);
+        }
+
+        return $conversation;
+    }
 }
