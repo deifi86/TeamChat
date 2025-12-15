@@ -16,7 +16,7 @@ Nach Abschluss dieser Phase haben wir:
 ## 8.1 Basis-Komponenten [FE]
 
 ### 8.1.1 TitleBar Komponente (Electron)
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/layout/TitleBar.vue`
 ```vue
@@ -119,7 +119,7 @@ onMounted(async () => {
 ---
 
 ### 8.1.2 Avatar Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/Avatar.vue`
 ```vue
@@ -229,7 +229,7 @@ function onError() {
 ---
 
 ### 8.1.3 Button Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/Button.vue`
 ```vue
@@ -304,7 +304,7 @@ const buttonClasses = computed(() => {
 ---
 
 ### 8.1.4 Input Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/Input.vue`
 ```vue
@@ -410,7 +410,7 @@ const id = computed(() => props.id || `input-${Math.random().toString(36).substr
 ---
 
 ### 8.1.5 Modal Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/Modal.vue`
 ```vue
@@ -548,7 +548,7 @@ function closeModal() {
 ---
 
 ### 8.1.6 LoadingSpinner Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/LoadingSpinner.vue`
 ```vue
@@ -596,7 +596,7 @@ const sizeClass = computed(() => ({
 ---
 
 ### 8.1.7 Dropdown Komponente
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Datei:** `frontend/src/components/common/Dropdown.vue`
 ```vue
