@@ -66,6 +66,7 @@ class ListConversationsTest extends TestCase
             'sender_id' => $other->id,
             'content' => $encrypted['content'],
             'content_iv' => $encrypted['content_iv'],
+            'created_at' => now(),
         ]);
 
         $response = $this->actingAs($user)

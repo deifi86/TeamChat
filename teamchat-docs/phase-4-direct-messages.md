@@ -1267,7 +1267,7 @@ php artisan test
 ---
 
 ### 4.4.3 Git Commit & Tag
-- [ ] **Erledigt**
+- [x] **Erledigt**
 
 **Durchführung:**
 ```bash

@@ -31,8 +31,10 @@ class ConversationMessagesTest extends TestCase
         Message::factory()->create([
             'messageable_type' => 'direct',
             'messageable_id' => $conversation->id,
+            'sender_id' => $other->id,
             'content' => $encrypted['content'],
             'content_iv' => $encrypted['content_iv'],
+            'created_at' => now(),
         ]);
 
         $response = $this->actingAs($user)

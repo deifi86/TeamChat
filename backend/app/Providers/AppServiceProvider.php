@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Channel;
+use App\Models\DirectConversation;
 use App\Services\ImageCompressionService;
 use App\Services\MessageEncryptionService;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Register Polymorphic Type Mapping
+        Relation::morphMap([
+            'channel' => Channel::class,
+            'direct' => DirectConversation::class,
+        ]);
     }
 }

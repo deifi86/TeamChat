@@ -29,12 +29,6 @@ class DirectConversationController extends Controller
         $conversations = DirectConversation::where('user_one_id', $user->id)
             ->orWhere('user_two_id', $user->id)
             ->with(['userOne:id,username,avatar_path,status', 'userTwo:id,username,avatar_path,status'])
-            ->withCount(['messages as unread_count' => function ($query) use ($user) {
-                $query->where('sender_id', '!=', $user->id)
-                    ->whereDoesntHave('readReceipts', function ($q) use ($user) {
-                        $q->where('user_id', $user->id);
-                    });
-            }])
             ->get()
             ->map(fn ($conv) => $this->formatConversation($conv, $user))
             ->sortByDesc('updated_at')
@@ -52,7 +46,7 @@ class DirectConversationController extends Controller
         $user = $request->user();
 
         $validated = $request->validate([
-            'user_id' => ['required', 'exists:users,id', 'different:' . $user->id],
+            'user_id' => ['required', 'exists:users,id', 'not_in:' . $user->id],
         ]);
 
         $otherUser = User::find($validated['user_id']);
@@ -217,9 +211,6 @@ class DirectConversationController extends Controller
             if ($beforeMessage) {
                 $query->where('created_at', '<', $beforeMessage->created_at);
             }
-        } else {
-            // Default: Letzte 3 Tage
-            $query->where('created_at', '>=', now()->subDays(3));
         }
 
         $messages = $query->limit($limit + 1)->get();
@@ -366,7 +357,7 @@ class DirectConversationController extends Controller
                 ? !$conversation->user_one_accepted
                 : !$conversation->user_two_accepted,
             'last_message' => $lastMessageData,
-            'unread_count' => $conversation->unread_count ?? 0,
+            'unread_count' => 0, // TODO: Implement with ReadReceipts
             'updated_at' => $conversation->updated_at->toIso8601String(),
         ];
     }

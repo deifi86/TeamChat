@@ -58,4 +58,9 @@ class Message extends Model
     {
         return $this->hasMany(File::class);
     }
+
+    public function readReceipts()
+    {
+        return $this->hasMany(ReadReceipt::class);
+    }
 }
